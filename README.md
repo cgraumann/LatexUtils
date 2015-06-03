@@ -1,9 +1,9 @@
 LatexMacUtils
 =============
 
-Some Latex utilities for Mac which I want to share
+Some Latex utilities that ease my life which I want to share
 
-Clean LaTeX Junk Workflow
+Clean LaTeX Junk Workflow (MAC ONLY)
 -------------------------
 
 This is an easy Apple Automator service which deletes all the junk files created by Latex from a folder.
@@ -32,7 +32,7 @@ If you are missing any extensions, please send me a pull request to improve.
 Note: I deactivated recursive folder filtering for performance purposes.
 If you have junk files scattered over subfolders, consider to turn it on.
 
-Clean LaTeX Junk Shellscript
+Clean LaTeX Junk Shellscript (MAC/LINUX)
 ----------------------------
 
 You can also use a bash/shell script to remove those junk files. This has the advantage, that you can use it in your standard LaTeX editor (e.g. TexStudio) as your last build phase - resulting in always clean folders :-)
