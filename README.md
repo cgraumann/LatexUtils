@@ -74,6 +74,11 @@ How to install this script as a build phase in TexStudio:
 	"/PATH/TO/SCRIPT/cleanlatexjunk.sh" -fp ?me ?a) 
 	```
 	and change */PATH/TO/SCRIPT/* accordingly
-5. In the meta-command for *Build & View* add `| txs:///cleanjunk` at the end
+5. In the meta-command for *Build & View* add 
+```
+ | txs:///compile | txs:///compile | txs:///cleanjunk
+``` at the end
+
+***Please note:*** The files I called "junk" in fact are necessary for the LaTeX build process. To allow the TOC and all other references to work properly, you need to perform at least one compile run with these files present. To account for this, the suggested command in step 5 above includes two additional compile runs before deletion of the files.
 
 Now every build & view execution should result in a clean workspace :-)
