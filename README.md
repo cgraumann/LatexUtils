@@ -75,10 +75,46 @@ How to install this script as a build phase in TexStudio:
 	```
 	and change */PATH/TO/SCRIPT/* accordingly
 5. In the meta-command for *Build & View* add 
-```
- | txs:///compile | txs:///compile | txs:///cleanjunk
-``` at the end
+
+	```
+	 | txs:///compile | txs:///compile | txs:///cleanjunk
+	```
+	at the end
 
 ***Please note:*** The files I called "junk" in fact are necessary for the LaTeX build process. To allow the TOC and all other references to work properly, you need to perform at least one compile run with these files present. To account for this, the suggested command in step 5 above includes two additional compile runs before deletion of the files.
 
 Now every build & view execution should result in a clean workspace :-)
+
+
+Compress PDF (MAC/LINUX)
+------------
+
+*This is a general hint that can be used without this repository :-)*
+
+The normal pdfLaTeX workflow generates quite monstrous PDF files. A very common approach to reduce it in size, is to compress it afterwards. Most UNIX systems (as well as Mac) have the standard tool for this already installed: ghostscript.
+Accordingly you can use this command in your shell after compilation of the PDF:
+
+```
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=foo-compressed.pdf foo.pdf
+```
+
+### Including it into your TexStudio workflow
+
+1. Open *Preferences/Build* in TexStudio
+2. Select *Advanced options* at the bottom
+3. Add a new user command with the name `compress`
+4. As the command, enter:
+
+	```
+	/usr/local/bin/gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=%-compressed.pdf %.pdf 
+	```
+
+5. In the meta-command for *Build & View* add 
+	```
+	 | txs:///compress
+	```
+	at the end
+
+This will automaticall create an additional PDF called *<yourfilename>-compressed.pdf*. If you want to only use the compressed version, just remove the `-compressed` part in the command above.
+
+You'll be amazed about the difference in size ;-)
