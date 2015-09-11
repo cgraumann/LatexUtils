@@ -115,6 +115,4 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -sOutput
 	```
 	at the end
 
-This will automaticall create an additional PDF called *<yourfilename>-compressed.pdf*. If you want to only use the compressed version, just remove the `-compressed` part in the command above.
-
-You'll be amazed about the difference in size ;-)
+This will automaticall create an additional PDF called *<yourfilename>-compressed.pdf*. You'll be amazed about the difference in size ;-)
